@@ -23,10 +23,7 @@
 </head>
 
 <body>
-
-
       <header class="navbar navbar-inverse navbar-fixed-top bs-docs-nav" role="banner">
-      <div class="container">
           <div class="navbar-header">
               <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".bs-navbar-collapse">
                   <span class="sr-only">Toggle navigation</span>
@@ -34,11 +31,11 @@
                   <span class="icon-bar"></span>
                   <span class="icon-bar"></span>
               </button>
-              <a href="#" class="navbar-brand">Note-it</a>
+              <a href="{{url_for('contact')}}" class="navbar-brand">Note-it</a>
           </div>
           <nav class="collapse navbar-collapse bs-navbar-collapse" role="navigation">
               <ul class="nav navbar-nav">
-                  <li><a href="#">Home</a></li>
+                  <li><a href="{{url_for('index')}}">Home</a></li>
                   <li class="dropdown">
                   <a href="#" class="dropdown-toggle" data-toggle="dropdown">Categories<b class="caret"></b></a>
               <ul class="dropdown-menu">
@@ -49,16 +46,15 @@
                 <li><a href="#">Reminders</a></li>
               </ul>
             </li>
-                  <li><a href="#">About</a></li>
-                  <li><a href="#">Contact</a></li>
+                  <li><a href="{{url_for('about')}}">About</a></li>
+                  <li><a href="{{url_for('contact')}}">Contact</a></li>
               </ul>
               <form method="post" action="" class="navbar-form navbar-right" role="search">
                     <input type="text" name="search" class="form-control" placeholder="Search"/>
                     <button type="submit" class="btn btn-success"> Submit </button>
-                </form
+                </form>
           </nav>
 
-      </div>
   </header>
   <div class="container" style=" border:2px solid red;">
 {% block content %}
@@ -69,13 +65,13 @@
             </p>
         </div>
 
-
+{% endblock %}
         <footer class="footer">
             <p>&copy; Company 2016</p>
         </footer>
 
     </div>
-{% endblock %}
+
 </body>
 
 </html>

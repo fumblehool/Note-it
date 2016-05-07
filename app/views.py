@@ -1,9 +1,12 @@
 from flask import render_template, request
 from app import app
+from config import connection
 
+
+c, conn = connection()
 
 @app.route("/")
-def main():
+def index():
     return render_template("index.html")
 
 
@@ -28,3 +31,13 @@ def inter_error(e):
 @app.route("/base")
 def base():
     return render_template("base.html")
+
+
+@app.route("/contact/")
+def contact():
+    return "Contact page"
+
+
+@app.route("/about")
+def about():
+    return "About page"
