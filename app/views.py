@@ -1,21 +1,26 @@
-from flask import render_template, request
+from flask import render_template, request, flash, session
 from app import app
-from config import connection
+import config
 
-
-c, conn = connection()
+app.secret_key = config.secret_key
+c, conn = config.connection()
 
 @app.route("/")
 def index():
-    return render_template("index.html")
+    if "logged_in" not in session:
+        return render_template("index.html")
+    else:
+        return render_template("dashboard.html")
 
 
 @app.route("/login/", methods=['GET','POST'])
 def login():
     if request.method == 'POST':
+        flash("login successful")
         return render_template("index.html")
     else:
-        return "Method not post"
+        flash("login unsuccessful")
+        return render_template("login.html")
 
 
 @app.errorhandler(404)
