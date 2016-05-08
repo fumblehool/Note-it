@@ -1,5 +1,5 @@
 body{
-     /*margin-top:5px;*/
+     margin-top:75px;
 }
 footer{
     margin:10px;
@@ -46,6 +46,10 @@ h1 {
     text-align: center;
     text-decoration: none;
 }
+a.user{
+    color:white;
+}
+
 div.img{
     float:left;
     display: inline-block;

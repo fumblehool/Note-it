@@ -4,5 +4,14 @@
 {% endblock %}
 
 {% block content%}
-<h1>THis is content </h1>
+<div class="jumbotron">
+    <center>
+    <h1>Note-it App</h1>
+    <p class="lead"></p>
+
+    <a class="btn btn-lg btn-success" href="{{url_for('login')}}" role="button">Sign In</a>
+
+    <a class="btn btn-lg btn-success" href="{{url_for('register')}}" role="button">Register</a>
+  </center>
+</div>
 {% endblock %}

@@ -1,9 +1,10 @@
-from flask import render_template, request, flash, session
+from flask import render_template, request, flash, session, redirect, url_for
 from app import app
 import config
+from dbconnect import connection
 
 app.secret_key = config.secret_key
-c, conn = config.connection()
+c, conn = connection()
 
 @app.route("/")
 def index():
@@ -17,10 +18,28 @@ def index():
 def login():
     if request.method == 'POST':
         flash("login successful")
+        session['logged_in'] = True
         return render_template("index.html")
     else:
         flash("login unsuccessful")
         return render_template("login.html")
+
+
+@app.route("/register/", methods=['GET','POST'])
+def register():
+    if request.method == 'POST':
+        flash("login successful")
+
+        return render_template("index.html")
+    else:
+        flash("login unsuccessful")
+        return render_template('register.html')
+
+
+@app.route("/logout/")
+def logout():
+    # session.pop('logged_in')
+    return redirect(url_for('index'))
 
 
 @app.errorhandler(404)
@@ -40,9 +59,9 @@ def base():
 
 @app.route("/contact/")
 def contact():
-    return "Contact page"
+    return render_template("contact.html")
 
 
-@app.route("/about")
+@app.route("/about/")
 def about():
-    return "About page"
+    return render_template("about.html")
