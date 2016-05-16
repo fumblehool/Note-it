@@ -1,5 +1,4 @@
 from flask import render_template, request, flash, session, redirect, url_for
-from functools import wraps
 from app import app
 import config
 from dbconnect import connection
